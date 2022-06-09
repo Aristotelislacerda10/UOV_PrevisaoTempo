@@ -1,11 +1,12 @@
 object FrmMain: TFrmMain
   Left = 0
   Top = 0
+  Margins.Top = 10
   BorderIcons = [biSystemMenu, biMaximize]
   BorderStyle = bsSingle
   Caption = 'Previsao do Tempo'
   ClientHeight = 531
-  ClientWidth = 745
+  ClientWidth = 656
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -19,7 +20,7 @@ object FrmMain: TFrmMain
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 745
+    Width = 656
     Height = 49
     Align = alTop
     Caption = 'PREVIS'#195'O DO TEMPO'
@@ -32,62 +33,56 @@ object FrmMain: TFrmMain
     ParentBackground = False
     ParentFont = False
     TabOrder = 0
-    ExplicitWidth = 735
+    ExplicitWidth = 745
   end
   object Panel2: TPanel
     Left = 0
     Top = 49
-    Width = 745
+    Width = 656
     Height = 482
     Align = alClient
     TabOrder = 1
-    ExplicitWidth = 735
-    ExplicitHeight = 472
+    ExplicitWidth = 745
     object Panel3: TPanel
       Left = 1
       Top = 1
-      Width = 743
-      Height = 40
+      Width = 654
+      Height = 56
       Align = alTop
       TabOrder = 0
-      ExplicitWidth = 733
+      ExplicitWidth = 743
       object Label1: TLabel
         AlignWithMargins = True
-        Left = 31
-        Top = 11
+        Left = 9
+        Top = 6
         Width = 80
-        Height = 18
+        Height = 13
         Margins.Left = 30
         Margins.Top = 10
         Margins.Bottom = 10
-        Align = alLeft
         Caption = 'Nome da cidade:'
-        ExplicitHeight = 13
       end
       object Label2: TLabel
         AlignWithMargins = True
-        Left = 523
-        Top = 11
+        Left = 464
+        Top = 6
         Width = 37
-        Height = 18
+        Height = 14
         Margins.Left = 5
         Margins.Top = 10
         Margins.Bottom = 10
-        Align = alLeft
         Caption = 'estado:'
-        ExplicitHeight = 13
       end
       object EdtNomeCidade: TEdit
         AlignWithMargins = True
-        Left = 119
-        Top = 9
-        Width = 394
-        Height = 23
+        Left = 9
+        Top = 22
+        Width = 451
+        Height = 22
         Margins.Left = 5
         Margins.Top = 8
         Margins.Right = 5
         Margins.Bottom = 7
-        Align = alLeft
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -12
@@ -95,19 +90,17 @@ object FrmMain: TFrmMain
         Font.Style = []
         ParentFont = False
         TabOrder = 0
-        ExplicitHeight = 22
       end
       object EdtEstado: TEdit
         AlignWithMargins = True
-        Left = 568
-        Top = 9
-        Width = 49
-        Height = 23
+        Left = 464
+        Top = 22
+        Width = 67
+        Height = 22
         Margins.Left = 5
         Margins.Top = 8
         Margins.Right = 5
         Margins.Bottom = 7
-        Align = alLeft
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -12
@@ -115,19 +108,281 @@ object FrmMain: TFrmMain
         Font.Style = []
         ParentFont = False
         TabOrder = 1
-        ExplicitHeight = 22
       end
       object BtnPesquisar: TButton
         AlignWithMargins = True
-        Left = 635
-        Top = 4
+        Left = 539
+        Top = 6
         Width = 104
-        Height = 32
-        Align = alRight
+        Height = 38
         Caption = 'Pesquisar'
         TabOrder = 2
-        ExplicitLeft = 625
       end
     end
+    object PanelCabecalho: TPanel
+      AlignWithMargins = True
+      Left = 11
+      Top = 67
+      Width = 634
+      Height = 177
+      Margins.Left = 10
+      Margins.Top = 10
+      Margins.Right = 10
+      Margins.Bottom = 10
+      Align = alTop
+      Color = clHighlightText
+      ParentBackground = False
+      TabOrder = 1
+      ExplicitLeft = -13
+      ExplicitTop = 91
+      object Label3: TLabel
+        AlignWithMargins = True
+        Left = 576
+        Top = 13
+        Width = 39
+        Height = 16
+        Margins.Left = 5
+        Margins.Top = 10
+        Margins.Bottom = 10
+        Caption = 'Cidade'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clGray
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
+      object LCidade: TLabel
+        AlignWithMargins = True
+        Left = 567
+        Top = 27
+        Width = 48
+        Height = 19
+        Margins.Left = 5
+        Margins.Top = 10
+        Margins.Bottom = 10
+        Caption = 'Cidade'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -16
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label4: TLabel
+        AlignWithMargins = True
+        Left = 589
+        Top = 50
+        Width = 26
+        Height = 16
+        Margins.Left = 5
+        Margins.Top = 10
+        Margins.Bottom = 10
+        Caption = 'Data'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clGray
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
+      object LData: TLabel
+        AlignWithMargins = True
+        Left = 583
+        Top = 62
+        Width = 32
+        Height = 19
+        Margins.Left = 5
+        Margins.Top = 10
+        Margins.Bottom = 10
+        Caption = 'Data'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -16
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label5: TLabel
+        AlignWithMargins = True
+        Left = 588
+        Top = 88
+        Width = 27
+        Height = 16
+        Margins.Left = 5
+        Margins.Top = 10
+        Margins.Bottom = 10
+        Caption = 'Hora'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clGray
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
+      object LHora: TLabel
+        AlignWithMargins = True
+        Left = 581
+        Top = 101
+        Width = 34
+        Height = 19
+        Margins.Left = 5
+        Margins.Top = 10
+        Margins.Bottom = 10
+        Caption = 'Hora'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -16
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
+      object LMomento: TLabel
+        AlignWithMargins = True
+        Left = 549
+        Top = 139
+        Width = 66
+        Height = 19
+        Margins.Left = 5
+        Margins.Top = 10
+        Margins.Bottom = 10
+        Caption = 'Momento'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -16
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label7: TLabel
+        AlignWithMargins = True
+        Left = 562
+        Top = 126
+        Width = 53
+        Height = 16
+        Margins.Left = 5
+        Margins.Top = 10
+        Margins.Bottom = 10
+        Caption = 'Momento'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clGray
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
+      object ImageTemp: TImage
+        Left = 11
+        Top = 14
+        Width = 126
+        Height = 78
+      end
+      object Label6: TLabel
+        AlignWithMargins = True
+        Left = 145
+        Top = 1
+        Width = 62
+        Height = 55
+        Margins.Left = 5
+        Margins.Top = 10
+        Margins.Bottom = 10
+        Caption = '29'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -48
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label8: TLabel
+        AlignWithMargins = True
+        Left = 215
+        Top = 14
+        Width = 26
+        Height = 29
+        Margins.Left = 5
+        Margins.Top = 10
+        Margins.Bottom = 10
+        Caption = #186'C'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -24
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label9: TLabel
+        AlignWithMargins = True
+        Left = 145
+        Top = 59
+        Width = 120
+        Height = 16
+        Margins.Left = 5
+        Margins.Top = 10
+        Margins.Bottom = 10
+        Caption = 'Velocidade do vento:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clGray
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
+      object LVelocidadeVento: TLabel
+        AlignWithMargins = True
+        Left = 272
+        Top = 56
+        Width = 59
+        Height = 19
+        Margins.Left = 5
+        Margins.Top = 10
+        Margins.Bottom = 10
+        Caption = '1.54 km'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -16
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label10: TLabel
+        AlignWithMargins = True
+        Left = 176
+        Top = 76
+        Width = 89
+        Height = 16
+        Margins.Left = 5
+        Margins.Top = 10
+        Margins.Bottom = 10
+        Caption = 'Umidade do ar:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clGray
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
+      object LUmidadeAr: TLabel
+        AlignWithMargins = True
+        Left = 272
+        Top = 73
+        Width = 18
+        Height = 19
+        Margins.Left = 5
+        Margins.Top = 10
+        Margins.Bottom = 10
+        Caption = '54'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -16
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
+    end
+  end
+  object ImageListTemp: TImageList
+    Left = 107
+    Top = 220
   end
 end

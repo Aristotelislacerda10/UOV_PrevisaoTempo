@@ -7,7 +7,9 @@ uses
   DataSetConverter4D.Impl in '..\Library\DataSetConverter4D.Impl.pas',
   DataSetConverter4D in '..\Library\DataSetConverter4D.pas',
   DataSetConverter4D.Util in '..\Library\DataSetConverter4D.Util.pas',
-  RestConsumeAPI in '..\Library\RestConsumeAPI.pas';
+  RestConsumeAPI in '..\Library\RestConsumeAPI.pas',
+  UTemperaturaModel in '..\Controller\UTemperaturaModel.pas',
+  UTemperaturaController in '..\Controller\UTemperaturaController.pas';
 
 {$R *.res}
 

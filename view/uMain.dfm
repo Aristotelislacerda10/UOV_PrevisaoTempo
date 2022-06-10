@@ -3,10 +3,10 @@ object FrmMain: TFrmMain
   Top = 0
   Margins.Top = 10
   BorderIcons = [biSystemMenu, biMaximize]
-  BorderStyle = bsSingle
+  BorderStyle = bsNone
   Caption = 'Previsao do Tempo'
-  ClientHeight = 531
-  ClientWidth = 656
+  ClientHeight = 511
+  ClientWidth = 662
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,39 +15,43 @@ object FrmMain: TFrmMain
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
+  OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 656
+    Width = 662
     Height = 49
     Align = alTop
     Caption = 'PREVIS'#195'O DO TEMPO'
     Color = clTeal
     Font.Charset = ANSI_CHARSET
     Font.Color = clWhite
-    Font.Height = -16
-    Font.Name = 'Verdana'
+    Font.Height = -24
+    Font.Name = 'Yu Gothic'
     Font.Style = [fsBold]
     ParentBackground = False
     ParentFont = False
     TabOrder = 0
+    ExplicitWidth = 656
   end
   object Panel2: TPanel
     Left = 0
     Top = 49
-    Width = 656
-    Height = 482
+    Width = 662
+    Height = 462
     Align = alClient
     TabOrder = 1
+    ExplicitHeight = 485
     object Panel3: TPanel
       Left = 1
       Top = 1
-      Width = 654
+      Width = 660
       Height = 56
       Align = alTop
       TabOrder = 0
+      ExplicitWidth = 654
       object Label1: TLabel
         AlignWithMargins = True
         Left = 9
@@ -68,7 +72,7 @@ object FrmMain: TFrmMain
         Margins.Left = 5
         Margins.Top = 10
         Margins.Bottom = 10
-        Caption = 'estado:'
+        Caption = 'Estado:'
       end
       object EdtNomeCidade: TEdit
         AlignWithMargins = True
@@ -110,8 +114,8 @@ object FrmMain: TFrmMain
         AlignWithMargins = True
         Left = 539
         Top = 6
-        Width = 104
-        Height = 38
+        Width = 111
+        Height = 39
         Caption = 'Pesquisar'
         TabOrder = 2
       end
@@ -120,7 +124,7 @@ object FrmMain: TFrmMain
       AlignWithMargins = True
       Left = 11
       Top = 67
-      Width = 634
+      Width = 640
       Height = 177
       Margins.Left = 10
       Margins.Top = 10
@@ -130,6 +134,7 @@ object FrmMain: TFrmMain
       Color = clHighlightText
       ParentBackground = False
       TabOrder = 1
+      ExplicitWidth = 639
       object Label3: TLabel
         AlignWithMargins = True
         Left = 576
@@ -270,23 +275,23 @@ object FrmMain: TFrmMain
         AlignWithMargins = True
         Left = 145
         Top = 1
-        Width = 62
-        Height = 58
+        Width = 82
+        Height = 77
         Margins.Left = 5
         Margins.Top = 10
         Margins.Bottom = 10
         Caption = '29'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
-        Font.Height = -48
+        Font.Height = -64
         Font.Name = 'Tahoma'
         Font.Style = [fsBold]
         ParentFont = False
       end
       object Label8: TLabel
         AlignWithMargins = True
-        Left = 215
-        Top = 14
+        Left = 231
+        Top = 16
         Width = 26
         Height = 29
         Margins.Left = 5
@@ -302,8 +307,8 @@ object FrmMain: TFrmMain
       end
       object Label9: TLabel
         AlignWithMargins = True
-        Left = 145
-        Top = 59
+        Left = 141
+        Top = 69
         Width = 120
         Height = 16
         Margins.Left = 5
@@ -319,8 +324,8 @@ object FrmMain: TFrmMain
       end
       object LVelocidadeVento: TLabel
         AlignWithMargins = True
-        Left = 272
-        Top = 56
+        Left = 269
+        Top = 66
         Width = 59
         Height = 19
         Margins.Left = 5
@@ -336,8 +341,8 @@ object FrmMain: TFrmMain
       end
       object Label10: TLabel
         AlignWithMargins = True
-        Left = 176
-        Top = 76
+        Left = 142
+        Top = 89
         Width = 89
         Height = 16
         Margins.Left = 5
@@ -353,8 +358,8 @@ object FrmMain: TFrmMain
       end
       object LUmidadeAr: TLabel
         AlignWithMargins = True
-        Left = 272
-        Top = 73
+        Left = 239
+        Top = 86
         Width = 18
         Height = 19
         Margins.Left = 5
@@ -379,10 +384,275 @@ object FrmMain: TFrmMain
         ImageIndex = 0
         ImageName = 'sol'
       end
+      object Label11: TLabel
+        AlignWithMargins = True
+        Left = 24
+        Top = 123
+        Width = 110
+        Height = 16
+        Margins.Left = 5
+        Margins.Top = 10
+        Margins.Bottom = 10
+        Caption = 'Condi'#231#227'o do tempo'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clGray
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
+      object LCondicao: TLabel
+        AlignWithMargins = True
+        Left = 24
+        Top = 137
+        Width = 85
+        Height = 25
+        Margins.Left = 5
+        Margins.Top = 10
+        Margins.Bottom = 10
+        Caption = 'Condi'#231#227'o'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -21
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
+    end
+    object PanelSeg: TPanel
+      Left = 11
+      Top = 257
+      Width = 124
+      Height = 77
+      Color = clHighlightText
+      ParentBackground = False
+      TabOrder = 2
+      object VirtualImage2: TVirtualImage
+        Left = 1
+        Top = 1
+        Width = 48
+        Height = 48
+        ImageCollection = ImageCollection1
+        ImageWidth = 0
+        ImageHeight = 0
+        ImageIndex = 0
+        ImageName = 'sol'
+      end
+      object Label12: TLabel
+        AlignWithMargins = True
+        Left = 54
+        Top = 23
+        Width = 25
+        Height = 16
+        Margins.Left = 5
+        Margins.Top = 10
+        Margins.Bottom = 10
+        Caption = 'Min:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clGray
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label13: TLabel
+        AlignWithMargins = True
+        Left = 86
+        Top = 20
+        Width = 16
+        Height = 16
+        Margins.Left = 5
+        Margins.Top = 10
+        Margins.Bottom = 10
+        Caption = '29'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label14: TLabel
+        AlignWithMargins = True
+        Left = 86
+        Top = 37
+        Width = 16
+        Height = 16
+        Margins.Left = 5
+        Margins.Top = 10
+        Margins.Bottom = 10
+        Caption = '54'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label15: TLabel
+        AlignWithMargins = True
+        Left = 51
+        Top = 40
+        Width = 28
+        Height = 16
+        Margins.Left = 5
+        Margins.Top = 10
+        Margins.Bottom = 10
+        Caption = 'Max:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clGray
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label16: TLabel
+        AlignWithMargins = True
+        Left = 4
+        Top = 55
+        Width = 116
+        Height = 18
+        Align = alBottom
+        Alignment = taCenter
+        Caption = 'Condi'#231#227'o'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -15
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        ExplicitTop = 54
+        ExplicitWidth = 58
+      end
+      object Label17: TLabel
+        AlignWithMargins = True
+        Left = 55
+        Top = 5
+        Width = 23
+        Height = 16
+        Margins.Left = 5
+        Margins.Top = 10
+        Margins.Bottom = 10
+        Caption = 'Dia:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clGray
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label18: TLabel
+        AlignWithMargins = True
+        Left = 86
+        Top = 2
+        Width = 28
+        Height = 16
+        Margins.Left = 5
+        Margins.Top = 10
+        Margins.Bottom = 10
+        Caption = 'Seg.'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+    end
+    object Panel4: TPanel
+      Left = 140
+      Top = 257
+      Width = 124
+      Height = 77
+      Color = clHighlightText
+      ParentBackground = False
+      TabOrder = 3
+    end
+    object Panel5: TPanel
+      Left = 269
+      Top = 257
+      Width = 124
+      Height = 77
+      Color = clHighlightText
+      ParentBackground = False
+      TabOrder = 4
+    end
+    object Panel6: TPanel
+      Left = 398
+      Top = 257
+      Width = 124
+      Height = 77
+      Color = clHighlightText
+      ParentBackground = False
+      TabOrder = 5
+    end
+    object Panel7: TPanel
+      Left = 527
+      Top = 257
+      Width = 124
+      Height = 77
+      Color = clHighlightText
+      ParentBackground = False
+      TabOrder = 6
+    end
+    object Panel8: TPanel
+      Left = 11
+      Top = 339
+      Width = 124
+      Height = 77
+      Color = clHighlightText
+      ParentBackground = False
+      TabOrder = 7
+    end
+    object Panel9: TPanel
+      Left = 140
+      Top = 339
+      Width = 124
+      Height = 77
+      Color = clHighlightText
+      ParentBackground = False
+      TabOrder = 8
+    end
+    object Panel10: TPanel
+      Left = 269
+      Top = 339
+      Width = 124
+      Height = 77
+      Color = clHighlightText
+      ParentBackground = False
+      TabOrder = 9
+    end
+    object Panel11: TPanel
+      Left = 398
+      Top = 339
+      Width = 124
+      Height = 77
+      Color = clHighlightText
+      ParentBackground = False
+      TabOrder = 10
+    end
+    object Panel12: TPanel
+      Left = 527
+      Top = 339
+      Width = 124
+      Height = 77
+      Color = clHighlightText
+      ParentBackground = False
+      TabOrder = 11
+    end
+    object BtnSair: TButton
+      AlignWithMargins = True
+      Left = 527
+      Top = 422
+      Width = 124
+      Height = 30
+      Caption = 'Sair'
+      TabOrder = 12
+      OnClick = BtnSairClick
     end
   end
   object ImageListTemp: TImageList
-    Left = 107
+    Left = 411
     Top = 220
     Bitmap = {
       494C010101000800040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
@@ -1984,7 +2254,7 @@ object FrmMain: TFrmMain
               4E44AE426082}
           end>
       end>
-    Left = 355
+    Left = 475
     Top = 220
   end
 end

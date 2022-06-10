@@ -36,6 +36,29 @@ type
     ImageListTemp: TImageList;
     VirtualImage1: TVirtualImage;
     ImageCollection1: TImageCollection;
+    Label11: TLabel;
+    LCondicao: TLabel;
+    PanelSeg: TPanel;
+    Panel4: TPanel;
+    Panel5: TPanel;
+    Panel6: TPanel;
+    Panel7: TPanel;
+    Panel8: TPanel;
+    Panel9: TPanel;
+    Panel10: TPanel;
+    Panel11: TPanel;
+    Panel12: TPanel;
+    BtnSair: TButton;
+    VirtualImage2: TVirtualImage;
+    Label12: TLabel;
+    Label13: TLabel;
+    Label14: TLabel;
+    Label15: TLabel;
+    Label16: TLabel;
+    Label17: TLabel;
+    Label18: TLabel;
+    procedure BtnSairClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -48,5 +71,15 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TFrmMain.BtnSairClick(Sender: TObject);
+begin
+  close;
+end;
+
+procedure TFrmMain.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+ action := cafree;
+end;
 
 end.

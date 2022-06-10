@@ -5,7 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls,
-  System.ImageList, Vcl.ImgList;
+  System.ImageList, Vcl.ImgList, Vcl.BaseImageCollection, Vcl.ImageCollection,
+  Vcl.VirtualImage;
 
 type
   TFrmMain = class(TForm)
@@ -26,7 +27,6 @@ type
     LHora: TLabel;
     LMomento: TLabel;
     Label7: TLabel;
-    ImageTemp: TImage;
     Label6: TLabel;
     Label8: TLabel;
     Label9: TLabel;
@@ -34,6 +34,8 @@ type
     Label10: TLabel;
     LUmidadeAr: TLabel;
     ImageListTemp: TImageList;
+    VirtualImage1: TVirtualImage;
+    ImageCollection1: TImageCollection;
   private
     { Private declarations }
   public

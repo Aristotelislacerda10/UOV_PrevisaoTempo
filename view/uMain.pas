@@ -27,7 +27,7 @@ type
     LHora: TLabel;
     LMomento: TLabel;
     Label7: TLabel;
-    Label6: TLabel;
+    LTemperatura: TLabel;
     Label8: TLabel;
     Label9: TLabel;
     LVelocidadeVento: TLabel;
@@ -59,6 +59,8 @@ type
     Label18: TLabel;
     procedure BtnSairClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure BtnPesquisarClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -70,7 +72,54 @@ var
 
 implementation
 
+uses UTemperaturaModel, UTemperaturaController;
+
 {$R *.dfm}
+
+procedure TFrmMain.BtnPesquisarClick(Sender: TObject);
+Var previsaoTempo : TResults;
+begin
+ try
+   if edtNomeCidade.text = '' then
+   begin
+     showMessage('nenhuma cidade digitada');
+     exit;
+   end;
+
+   if edtEstado.text = '' then
+   begin
+     showMessage('nenhum estado digitado');
+     exit;
+   end;
+
+  previsaoTempo := getPrevisaoTempo(trim(edtNomeCidade.text)+','+trim(edtEstado.text));
+
+  if previsaoTempo <> nil then
+  begin
+   PanelCabecalho.visible   := true;
+   LCidade.caption          := previsaoTempo.City_name;
+   LData.caption            := previsaoTempo.Date;
+   Lhora.caption            := previsaoTempo.time;
+   LMomento.caption         := previsaoTempo.currently;
+   LTemperatura.caption     := intToStr(previsaoTempo.temp);
+   LVelocidadeVento.caption := previsaoTempo.wind_speedy;
+   LUmidadeAr.caption       := intToStr(previsaoTempo.Humidity);
+   LCondicao.caption        := previsaoTempo.description;
+
+   if previsaoTempo.temp > 30 then
+   VirtualImage1.ImageIndex := 0
+   else if previsaoTempo.temp < 27 then
+   VirtualImage1.ImageIndex := 2;
+
+
+
+
+  end;
+
+ finally
+
+ end;
+end;
 
 procedure TFrmMain.BtnSairClick(Sender: TObject);
 begin
@@ -80,6 +129,12 @@ end;
 procedure TFrmMain.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
  action := cafree;
+end;
+
+procedure TFrmMain.FormShow(Sender: TObject);
+begin
+  PanelCabecalho.visible   := false;
+
 end;
 
 end.

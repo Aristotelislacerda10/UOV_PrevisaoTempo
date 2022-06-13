@@ -3,10 +3,10 @@ object FrmMain: TFrmMain
   Top = 0
   Margins.Top = 10
   BorderIcons = [biSystemMenu, biMaximize]
-  BorderStyle = bsNone
+  BorderStyle = bsSingle
   Caption = 'Previsao do Tempo'
-  ClientHeight = 511
-  ClientWidth = 662
+  ClientHeight = 482
+  ClientWidth = 656
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,12 +16,13 @@ object FrmMain: TFrmMain
   OldCreateOrder = False
   Position = poMainFormCenter
   OnClose = FormClose
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 662
+    Width = 656
     Height = 49
     Align = alTop
     Caption = 'PREVIS'#195'O DO TEMPO'
@@ -34,24 +35,25 @@ object FrmMain: TFrmMain
     ParentBackground = False
     ParentFont = False
     TabOrder = 0
-    ExplicitWidth = 656
+    ExplicitWidth = 662
   end
   object Panel2: TPanel
     Left = 0
     Top = 49
-    Width = 662
-    Height = 462
+    Width = 656
+    Height = 433
     Align = alClient
     TabOrder = 1
-    ExplicitHeight = 485
+    ExplicitWidth = 662
+    ExplicitHeight = 462
     object Panel3: TPanel
       Left = 1
       Top = 1
-      Width = 660
+      Width = 654
       Height = 56
       Align = alTop
       TabOrder = 0
-      ExplicitWidth = 654
+      ExplicitWidth = 660
       object Label1: TLabel
         AlignWithMargins = True
         Left = 9
@@ -118,13 +120,14 @@ object FrmMain: TFrmMain
         Height = 39
         Caption = 'Pesquisar'
         TabOrder = 2
+        OnClick = BtnPesquisarClick
       end
     end
     object PanelCabecalho: TPanel
       AlignWithMargins = True
       Left = 11
       Top = 67
-      Width = 640
+      Width = 634
       Height = 177
       Margins.Left = 10
       Margins.Top = 10
@@ -134,7 +137,7 @@ object FrmMain: TFrmMain
       Color = clHighlightText
       ParentBackground = False
       TabOrder = 1
-      ExplicitWidth = 639
+      ExplicitWidth = 640
       object Label3: TLabel
         AlignWithMargins = True
         Left = 576
@@ -161,6 +164,7 @@ object FrmMain: TFrmMain
         Margins.Left = 5
         Margins.Top = 10
         Margins.Bottom = 10
+        Alignment = taRightJustify
         Caption = 'Cidade'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -195,6 +199,7 @@ object FrmMain: TFrmMain
         Margins.Left = 5
         Margins.Top = 10
         Margins.Bottom = 10
+        Alignment = taRightJustify
         Caption = 'Data'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -229,6 +234,7 @@ object FrmMain: TFrmMain
         Margins.Left = 5
         Margins.Top = 10
         Margins.Bottom = 10
+        Alignment = taRightJustify
         Caption = 'Hora'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -246,6 +252,7 @@ object FrmMain: TFrmMain
         Margins.Left = 5
         Margins.Top = 10
         Margins.Bottom = 10
+        Alignment = taRightJustify
         Caption = 'Momento'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -271,7 +278,7 @@ object FrmMain: TFrmMain
         Font.Style = []
         ParentFont = False
       end
-      object Label6: TLabel
+      object LTemperatura: TLabel
         AlignWithMargins = True
         Left = 145
         Top = 1
@@ -521,7 +528,6 @@ object FrmMain: TFrmMain
         Font.Name = 'Tahoma'
         Font.Style = []
         ParentFont = False
-        ExplicitTop = 54
         ExplicitWidth = 58
       end
       object Label17: TLabel

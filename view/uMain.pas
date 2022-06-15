@@ -5,8 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls,
-  System.ImageList, Vcl.ImgList, Vcl.BaseImageCollection, Vcl.ImageCollection,
-  Vcl.VirtualImage;
+  System.ImageList, Vcl.ImgList, Vcl.BaseImageCollection, Vcl.ImageCollection, Data.DB, Vcl.Grids, Vcl.DBGrids, Datasnap.DBClient;
 
 type
   TFrmMain = class(TForm)
@@ -34,29 +33,18 @@ type
     Label10: TLabel;
     LUmidadeAr: TLabel;
     ImageListTemp: TImageList;
-    VirtualImage1: TVirtualImage;
-    ImageCollection1: TImageCollection;
     Label11: TLabel;
     LCondicao: TLabel;
-    PanelSeg: TPanel;
-    Panel4: TPanel;
-    Panel5: TPanel;
-    Panel6: TPanel;
-    Panel7: TPanel;
-    Panel8: TPanel;
-    Panel9: TPanel;
-    Panel10: TPanel;
-    Panel11: TPanel;
-    Panel12: TPanel;
     BtnSair: TButton;
-    VirtualImage2: TVirtualImage;
-    Label12: TLabel;
-    Label13: TLabel;
-    Label14: TLabel;
-    Label15: TLabel;
-    Label16: TLabel;
-    Label17: TLabel;
-    Label18: TLabel;
+    Image1: TImage;
+    GridForecasts: TDBGrid;
+    dsForecasts: TDataSource;
+    CDForecasts: TClientDataSet;
+    CDForecastsdate: TStringField;
+    CDForecastsweekday: TStringField;
+    CDForecastsmax: TIntegerField;
+    CDForecastsmin: TIntegerField;
+    CDForecastsdescription: TStringField;
     procedure BtnSairClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure BtnPesquisarClick(Sender: TObject);
@@ -78,6 +66,7 @@ uses UTemperaturaModel, UTemperaturaController;
 
 procedure TFrmMain.BtnPesquisarClick(Sender: TObject);
 Var previsaoTempo : TResults;
+    i             : integer;
 begin
  try
    if edtNomeCidade.text = '' then
@@ -91,28 +80,46 @@ begin
      showMessage('nenhum estado digitado');
      exit;
    end;
+   image1.picture:= nil;
 
   previsaoTempo := getPrevisaoTempo(trim(edtNomeCidade.text)+','+trim(edtEstado.text));
 
   if previsaoTempo <> nil then
   begin
-   PanelCabecalho.visible   := true;
-   LCidade.caption          := previsaoTempo.City_name;
-   LData.caption            := previsaoTempo.Date;
-   Lhora.caption            := previsaoTempo.time;
-   LMomento.caption         := previsaoTempo.currently;
-   LTemperatura.caption     := intToStr(previsaoTempo.temp);
-   LVelocidadeVento.caption := previsaoTempo.wind_speedy;
-   LUmidadeAr.caption       := intToStr(previsaoTempo.Humidity);
-   LCondicao.caption        := previsaoTempo.description;
+    PanelCabecalho.visible   := true;
+    LCidade.caption          := previsaoTempo.City_name;
+    LData.caption            := previsaoTempo.Date;
+    Lhora.caption            := previsaoTempo.time;
+    LMomento.caption         := previsaoTempo.currently;
+    LTemperatura.caption     := intToStr(previsaoTempo.temp);
+    LVelocidadeVento.caption := previsaoTempo.wind_speedy;
+    LUmidadeAr.caption       := intToStr(previsaoTempo.Humidity);
+    LCondicao.caption        := previsaoTempo.description;
 
-   if previsaoTempo.temp > 30 then
-   VirtualImage1.ImageIndex := 0
-   else if previsaoTempo.temp < 27 then
-   VirtualImage1.ImageIndex := 2;
+    case strToInt(previsaoTempo.condition_code) of
+     0,2,3,4 : ImageListTemp.GetBitmap(4, Image1.Picture.Bitmap);
+     1,9,10,11,12,45,47: ImageListTemp.GetBitmap(3, Image1.Picture.Bitmap);
+     19,23,24,25,27,31,32,36,44: ImageListTemp.GetBitmap(0, Image1.Picture.Bitmap);
+     33: ImageListTemp.GetBitmap(1, Image1.Picture.Bitmap);
+     22,26,28,29,30,34: ImageListTemp.GetBitmap(2, Image1.Picture.Bitmap);
+     6,7,13,15,16,17,18,35,41,43,46: ImageListTemp.GetBitmap(5, Image1.Picture.Bitmap);
+    end;
 
+     CDForecasts.Close;
+     CDForecasts.open;
+     GridForecasts.visible := true;
 
-
+    for i := 0 to previsaoTempo.countItems - 1 do
+    begin
+      CDForecasts.Insert;
+      CDForecastsdate.asString               := previsaoTempo.forecast[i].date;
+      CDForecastsweekday.asString            := previsaoTempo.forecast[i].weekday;
+      CDForecastsmax.asInteger               := previsaoTempo.forecast[i].max;
+      CDForecastsmin.asInteger               := previsaoTempo.forecast[i].min;
+      CDForecastsdescription.asString        := previsaoTempo.forecast[i].description;
+      CDForecasts.post;
+    end;
+    CDForecasts.first;
 
   end;
 
@@ -134,6 +141,10 @@ end;
 procedure TFrmMain.FormShow(Sender: TObject);
 begin
   PanelCabecalho.visible   := false;
+  GridForecasts.visible    := false;
+  CDForecasts.close;
+  CDForecasts.CreateDataSet;
+
 
 end;
 

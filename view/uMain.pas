@@ -69,6 +69,10 @@ Var previsaoTempo : TResults;
     i             : integer;
 begin
  try
+
+   CDForecasts.close;
+   CDForecasts.CreateDataSet;
+
    if edtNomeCidade.text = '' then
    begin
      showMessage('nenhuma cidade digitada');

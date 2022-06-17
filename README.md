@@ -1,6 +1,12 @@
-# UOV_PrevisaoTempo
+<p align="center">
+ <a href="https://laravel.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/b/bd/Delphi_Language_Logo.png" width="200"></a>
 
-<h1 align="center"> app previsão do tempo e dados climáticos </h1>
+ <h3 align="center"> aplicação em delphi (pascal): VCL (native Windows) </h1>
+</p>
+
+<h1 align="center"> Previsão do tempo e dados climáticos </h1>
+
+
 
 Este aplicativo consome a API da "console.hgbrasil.com" para obter informações da previsão do clima e dados climáticos em tempo real
 - foi implementado apenas a rota de consulta por cidade;

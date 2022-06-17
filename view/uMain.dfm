@@ -2,7 +2,7 @@ object FrmMain: TFrmMain
   Left = 0
   Top = 0
   Margins.Top = 10
-  BorderIcons = [biSystemMenu, biMaximize]
+  BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Previsao do Tempo'
   ClientHeight = 529
@@ -43,6 +43,17 @@ object FrmMain: TFrmMain
     Height = 480
     Align = alClient
     TabOrder = 1
+    object Label12: TLabel
+      AlignWithMargins = True
+      Left = 11
+      Top = 439
+      Width = 66
+      Height = 13
+      Margins.Left = 30
+      Margins.Top = 10
+      Margins.Bottom = 10
+      Caption = 'Chave da API'
+    end
     object Panel3: TPanel
       Left = 1
       Top = 1
@@ -50,21 +61,10 @@ object FrmMain: TFrmMain
       Height = 56
       Align = alTop
       TabOrder = 0
-      object Label1: TLabel
-        AlignWithMargins = True
-        Left = 9
-        Top = 6
-        Width = 80
-        Height = 13
-        Margins.Left = 30
-        Margins.Top = 10
-        Margins.Bottom = 10
-        Caption = 'Nome da cidade:'
-      end
       object Label2: TLabel
         AlignWithMargins = True
         Left = 473
-        Top = 6
+        Top = 9
         Width = 37
         Height = 13
         Margins.Left = 5
@@ -72,11 +72,22 @@ object FrmMain: TFrmMain
         Margins.Bottom = 10
         Caption = 'Estado:'
       end
+      object Label6: TLabel
+        AlignWithMargins = True
+        Left = 10
+        Top = 9
+        Width = 80
+        Height = 13
+        Margins.Left = 30
+        Margins.Top = 10
+        Margins.Bottom = 10
+        Caption = 'Nome da cidade:'
+      end
       object EdtNomeCidade: TEdit
         AlignWithMargins = True
-        Left = 9
-        Top = 22
-        Width = 455
+        Left = 10
+        Top = 25
+        Width = 454
         Height = 22
         Margins.Left = 5
         Margins.Top = 8
@@ -93,7 +104,7 @@ object FrmMain: TFrmMain
       object EdtEstado: TEdit
         AlignWithMargins = True
         Left = 473
-        Top = 22
+        Top = 25
         Width = 67
         Height = 22
         Margins.Left = 5
@@ -112,7 +123,7 @@ object FrmMain: TFrmMain
       object BtnPesquisar: TButton
         AlignWithMargins = True
         Left = 549
-        Top = 5
+        Top = 8
         Width = 111
         Height = 39
         Caption = 'Pesquisar'
@@ -433,7 +444,7 @@ object FrmMain: TFrmMain
       Left = 11
       Top = 254
       Width = 650
-      Height = 185
+      Height = 181
       Margins.Left = 10
       Margins.Top = 0
       Margins.Right = 10
@@ -441,7 +452,13 @@ object FrmMain: TFrmMain
       BorderStyle = bsNone
       Ctl3D = False
       DataSource = dsForecasts
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = []
       ParentCtl3D = False
+      ParentFont = False
       ReadOnly = True
       TabOrder = 3
       TitleFont.Charset = DEFAULT_CHARSET
@@ -449,6 +466,13 @@ object FrmMain: TFrmMain
       TitleFont.Height = -11
       TitleFont.Name = 'Tahoma'
       TitleFont.Style = []
+    end
+    object EdtChaveConsulta: TEdit
+      Left = 11
+      Top = 454
+      Width = 121
+      Height = 21
+      TabOrder = 4
     end
   end
   object ImageListTemp: TImageList

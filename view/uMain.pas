@@ -12,7 +12,6 @@ type
     Panel1: TPanel;
     Panel2: TPanel;
     Panel3: TPanel;
-    Label1: TLabel;
     EdtNomeCidade: TEdit;
     Label2: TLabel;
     EdtEstado: TEdit;
@@ -45,12 +44,17 @@ type
     CDForecastsmax: TIntegerField;
     CDForecastsmin: TIntegerField;
     CDForecastsdescription: TStringField;
+    EdtChaveConsulta: TEdit;
+    Label12: TLabel;
+    Label6: TLabel;
     procedure BtnSairClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure BtnPesquisarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private
     { Private declarations }
+    procedure salvaDados;
+    procedure recuperaDados;
   public
     { Public declarations }
   end;
@@ -73,6 +77,12 @@ begin
    CDForecasts.close;
    CDForecasts.CreateDataSet;
 
+   if EdtChaveConsulta.text = '' then
+   begin
+     showMessage('Nenhuma chave da api informada, Adiquira a chave da API no site: https://console.hgbrasil.com/');
+     exit;
+   end;
+
    if edtNomeCidade.text = '' then
    begin
      showMessage('nenhuma cidade digitada');
@@ -86,7 +96,7 @@ begin
    end;
    image1.picture:= nil;
 
-  previsaoTempo := getPrevisaoTempo(trim(edtNomeCidade.text)+','+trim(edtEstado.text));
+  previsaoTempo := getPrevisaoTempo(trim(edtNomeCidade.text)+','+trim(edtEstado.text),trim(EdtChaveConsulta.text));
 
   if previsaoTempo <> nil then
   begin
@@ -124,7 +134,7 @@ begin
       CDForecasts.post;
     end;
     CDForecasts.first;
-
+    CDForecasts.IndexFieldNames := 'date';
   end;
 
  finally
@@ -139,6 +149,12 @@ end;
 
 procedure TFrmMain.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
+  try
+    salvaDados;
+  except
+
+  end;
+
  action := cafree;
 end;
 
@@ -148,6 +164,49 @@ begin
   GridForecasts.visible    := false;
   CDForecasts.close;
   CDForecasts.CreateDataSet;
+
+  try
+    recuperaDados;
+  except
+
+  end;
+
+
+end;
+procedure TFrmMain.salvaDados;
+var Conteudoarquivo : TStringList;
+begin
+ try
+   if not DirectoryExists(ExtractFilePath(Application.ExeName) + '\DB') then
+   begin
+     ForceDirectories(ExtractFilePath(Application.ExeName) + '\DB');
+   end;
+
+   Conteudoarquivo := TStringList.create;
+   Conteudoarquivo.Add(EdtChaveConsulta.Text);
+   Conteudoarquivo.SaveToFile(ExtractFilePath(Application.ExeName) + '\DB\chaveApi.txt');
+ finally
+
+ end;
+end;
+procedure TFrmMain.recuperaDados;
+var
+  arquivo: TextFile;
+  linha: String;
+begin
+  if not DirectoryExists(ExtractFilePath(Application.ExeName) + '\DB') then
+  begin
+    exit;
+  end;
+
+  AssignFile(arquivo, ExtractFilePath(Application.ExeName) + '\DB\chaveApi.txt');
+  Reset(arquivo);
+
+  ReadLn(arquivo, linha);
+  EdtChaveConsulta.Text := linha;
+
+  CloseFile(arquivo);
+
 
 
 end;

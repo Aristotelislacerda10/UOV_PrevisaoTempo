@@ -11,11 +11,11 @@ uses
   REST.Types,REST.Json,Generics.Collections,UTemperaturaModel;
 
 
-function getPrevisaoTempo(sCity_name : string) : TResults;
+function getPrevisaoTempo(sCity_name : string ; chaveApi : string) : TResults;
 
 implementation
 
-function getPrevisaoTempo(sCity_name : string) : TResults;
+function getPrevisaoTempo(sCity_name : string ; chaveApi : string) : TResults;
 var FConsumeAPI      : iRestConsumeAPI;
     retorno          : string;
     iCodRetorno      : integer;
@@ -27,7 +27,7 @@ begin
   try
     Resultado :=  TResults.create;
 
-    FConsumeAPI := TRestConsumeAPI.new('https://api.hgbrasil.com/weather?key=84055703&city_name='+sCity_name);
+    FConsumeAPI := TRestConsumeAPI.new('https://api.hgbrasil.com/weather?key='+chaveApi+'&city_name='+sCity_name);
     FConsumeAPI.bodyclear();
     FConsumeAPI.ExecutaMetodo(tpget, retorno, icodRetorno);
 
@@ -40,7 +40,8 @@ begin
     end
     else
     begin
-      showMessage('erro ao realizar consulta');
+      showMessage(retorno);
+      result := nil;
     end;
 
   finally
